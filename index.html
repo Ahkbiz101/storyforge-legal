@@ -3,21 +3,47 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>StoryForge — Legal</title>
+<title>StoryForge — Automated short-form video production</title>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-         max-width: 720px; margin: 4rem auto; padding: 0 1.5rem; color: #1a1a1a; line-height: 1.6; }
-  h1 { font-size: 2rem; margin-bottom: 0.25rem; }
-  p.lead { color: #555; margin-top: 0; }
+         max-width: 760px; margin: 4rem auto; padding: 0 1.5rem; color: #1a1a1a; line-height: 1.65; }
+  h1 { font-size: 2.25rem; margin-bottom: 0.25rem; }
+  h2 { font-size: 1.25rem; margin-top: 2.5rem; }
+  p.lead { color: #555; margin-top: 0; font-size: 1.1rem; }
   ul { padding-left: 1.25rem; }
+  ul li { margin-bottom: 0.4rem; }
   a { color: #d97757; }
   a:hover { color: #b85638; }
-  footer { margin-top: 4rem; color: #888; font-size: 0.85rem; }
+  .pill { display: inline-block; padding: 0.25rem 0.6rem; border-radius: 999px;
+          background: #f3eee9; color: #6b5c4f; font-size: 0.8rem; margin-right: 0.4rem; }
+  hr { border: none; border-top: 1px solid #ececec; margin: 3rem 0 1.5rem; }
+  footer { color: #888; font-size: 0.85rem; }
+  footer a { color: #888; }
 </style>
 </head>
 <body>
   <h1>StoryForge</h1>
-  <p class="lead">Automated content production and publishing for original short-form videos.</p>
+  <p class="lead">Automated production and publishing for original short-form videos.</p>
+
+  <h2>What it is</h2>
+  <p>StoryForge is an internal content production tool that helps a small team produce, render, and publish short-form videos at scale. The tool runs a multi-stage AI-assisted pipeline (writing &rarr; illustration &rarr; narration &rarr; rendering) and uploads the finished videos to authorized accounts on third-party platforms.</p>
+
+  <h2>What it publishes to</h2>
+  <p>
+    <span class="pill">YouTube</span>
+    <span class="pill">YouTube Shorts</span>
+    <span class="pill">TikTok</span>
+    <span class="pill">Instagram Reels</span>
+  </p>
+  <p>Each platform is connected via the platform's official API. Tokens are obtained through standard OAuth and stored AES-256-GCM-encrypted at rest. Uploads only happen when a creator on the team explicitly initiates them from the admin dashboard — there is no automated posting without human review.</p>
+
+  <h2>Who uses it</h2>
+  <p>StoryForge is operated by Abood Hashem and authorized collaborators. It is not a consumer-facing product — there is no public sign-up. Access is restricted to the operator and invited team members who run the content pipeline.</p>
+
+  <h2>Content focus</h2>
+  <p>The pipeline currently produces original kid-safe educational stories and adult narrative-format short-form content. All content is produced by the StoryForge team using AI tools; no third-party copyrighted material is uploaded.</p>
+
+  <hr>
 
   <h2>Legal</h2>
   <ul>
