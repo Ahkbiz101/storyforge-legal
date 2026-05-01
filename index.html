@@ -22,6 +22,93 @@
 </style>
 </head>
 <body>
+  <!--
+    OAuth landing zone. When a third-party platform (TikTok, etc.) redirects
+    the operator back here with ?code=... in the URL, this snippet detects
+    it, surfaces a copy-friendly card, and offers a one-click bounce back
+    to the local admin dashboard so the operator doesn't have to manually
+    hand-copy the code from the URL bar.
+
+    No secrets touch this page — the code is short-lived and only useful
+    once exchanged on the server side using the client_secret (which never
+    leaves the local server).
+  -->
+  <div id="oauth-landing" style="display:none; background:#fff7e6; border:1px solid #f5d680;
+       border-radius:12px; padding:1.25rem 1.5rem; margin-bottom:2rem;">
+    <h2 style="margin-top:0; font-size:1.1rem; color:#8a6500;">Auth code received</h2>
+    <p id="oauth-platform" style="margin:0.25rem 0 0.75rem; color:#5a4a25; font-size:0.95rem;"></p>
+    <code id="oauth-code" style="display:block; background:#fff; border:1px solid #eadfae;
+       padding:0.6rem 0.75rem; border-radius:6px; font-size:0.85rem; word-break:break-all;
+       margin-bottom:0.75rem;"></code>
+    <div>
+      <a id="oauth-bounce" href="#" style="display:inline-block; background:#d97757; color:#fff;
+         padding:0.55rem 1rem; border-radius:8px; font-size:0.9rem; font-weight:600;
+         text-decoration:none;">Send to local dashboard &rarr;</a>
+      <button id="oauth-copy" type="button" style="display:inline-block; background:#fff;
+         border:1px solid #d8c89c; color:#5a4a25; padding:0.55rem 1rem; border-radius:8px;
+         font-size:0.9rem; font-weight:500; margin-left:0.5rem; cursor:pointer;">Copy code</button>
+    </div>
+    <p style="margin:0.75rem 0 0; color:#7a6535; font-size:0.8rem;">
+      If your local dashboard isn't running, copy the code and paste it manually under
+      <em>Channels &rarr; Link TikTok</em> when you're back at your dev environment.
+    </p>
+  </div>
+  <script>
+    (function () {
+      var p = new URLSearchParams(window.location.search)
+      var code = p.get('code')
+      var error = p.get('error') || p.get('error_description')
+      var state = p.get('state') || ''
+      // TikTok includes scopes in the response; we don't act on them here.
+      if (!code && !error) return
+
+      var landing = document.getElementById('oauth-landing')
+      var platformLine = document.getElementById('oauth-platform')
+      var codeBox = document.getElementById('oauth-code')
+      var bounce = document.getElementById('oauth-bounce')
+      var copyBtn = document.getElementById('oauth-copy')
+
+      // Best-effort platform inference: TikTok appends `scopes` and uses `state`
+      // we set during init. We don't have a reliable platform marker in TT's
+      // callback, but we can hint based on shape.
+      var platform = state.indexOf('tt:') === 0 ? 'TikTok' :
+                     state.indexOf('ig:') === 0 ? 'Instagram' :
+                     'Connected platform'
+      landing.style.display = 'block'
+
+      if (error) {
+        platformLine.textContent = platform + ' returned an error: ' + error
+        codeBox.textContent = window.location.search
+        bounce.style.display = 'none'
+        copyBtn.style.display = 'none'
+        return
+      }
+
+      platformLine.textContent = platform + ' authorized. Code below is single-use; bring it to your local dashboard within ~10 minutes.'
+      codeBox.textContent = code
+
+      // Local admin dashboard — adjust port if your dev server runs elsewhere.
+      // The dashboard reads ?tiktok-code= and pre-fills the paste field.
+      var localUrl = 'http://localhost:3002/channels?tiktok-code=' + encodeURIComponent(code) +
+                     (state ? '&state=' + encodeURIComponent(state) : '')
+      bounce.href = localUrl
+
+      copyBtn.addEventListener('click', function () {
+        navigator.clipboard.writeText(code).then(function () {
+          copyBtn.textContent = 'Copied'
+          setTimeout(function () { copyBtn.textContent = 'Copy code' }, 1800)
+        }).catch(function () {
+          // Fallback: select the code box for manual copy
+          var range = document.createRange()
+          range.selectNodeContents(codeBox)
+          var sel = window.getSelection()
+          sel.removeAllRanges()
+          sel.addRange(range)
+        })
+      })
+    })()
+  </script>
+
   <h1>StoryForge</h1>
   <p class="lead">Automated production and publishing for original short-form videos.</p>
 
