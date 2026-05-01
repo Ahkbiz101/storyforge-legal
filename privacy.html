@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Policy — StoryForge</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+         max-width: 760px; margin: 3rem auto; padding: 0 1.5rem; color: #1a1a1a; line-height: 1.65; }
+  h1 { font-size: 2rem; margin-bottom: 0.25rem; }
+  h2 { font-size: 1.2rem; margin-top: 2.25rem; }
+  p.lead { color: #555; margin-top: 0; }
+  a { color: #d97757; }
+  small { color: #888; }
+  table { border-collapse: collapse; margin: 1rem 0; width: 100%; }
+  th, td { text-align: left; padding: 0.5rem 0.75rem; border-bottom: 1px solid #e6e6e6; vertical-align: top; }
+  th { background: #f7f4f1; font-weight: 600; }
+</style>
+</head>
+<body>
+  <h1>Privacy Policy</h1>
+  <p class="lead">Last updated: May 1, 2026</p>
+
+  <p>This Privacy Policy describes how StoryForge (the "Service"), operated by Abood Hashem, handles information when you use the Service. StoryForge is an internal content production and publishing tool used by its operator and authorized collaborators — it is not a consumer-facing product.</p>
+
+  <h2>1. Audience of this policy</h2>
+  <p>This policy describes data handling for <em>users of the Service</em> (the operator and authorized collaborators). The Service produces short-form video content that may be intended for general or younger audiences when published to third-party platforms; this policy does not govern those published videos or their viewers, who interact with the videos directly on the third-party platform under that platform's privacy policy.</p>
+
+  <h2>2. Information we handle</h2>
+  <table>
+    <thead>
+      <tr><th>Category</th><th>What it is</th><th>Why</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Account info</td>
+        <td>Email address, display name, password hash</td>
+        <td>To authenticate operator and collaborators</td>
+      </tr>
+      <tr>
+        <td>Platform OAuth credentials</td>
+        <td>Access tokens and refresh tokens for connected platforms (YouTube, TikTok, Instagram, etc.) — stored AES-256-GCM encrypted</td>
+        <td>To upload videos to platform accounts you authorize</td>
+      </tr>
+      <tr>
+        <td>Platform account metadata</td>
+        <td>Channel/account ID, username, display name from connected platforms</td>
+        <td>To display which account is linked and prevent posting to the wrong account</td>
+      </tr>
+      <tr>
+        <td>Content artifacts</td>
+        <td>Story ideas, scripts, generated images, audio narration, rendered videos</td>
+        <td>To produce and publish the content you create</td>
+      </tr>
+      <tr>
+        <td>Operational logs</td>
+        <td>Pipeline job status, errors, timestamps</td>
+        <td>Debugging and reliability</td>
+      </tr>
+    </tbody>
+  </table>
+  <p>We do not collect personal data from viewers of the published videos. Viewer interactions (likes, views, comments, profile data) are handled by the third-party platforms hosting the videos, under those platforms' policies.</p>
+
+  <h2>3. Third-party services we use</h2>
+  <p>The Service relies on the following third parties; each has its own privacy policy that applies to data we send them:</p>
+  <ul>
+    <li><strong>YouTube / Google APIs</strong> — to upload videos to authorized YouTube channels.</li>
+    <li><strong>TikTok APIs</strong> — to upload videos to authorized TikTok accounts.</li>
+    <li><strong>Instagram / Meta APIs</strong> — to upload videos to authorized Instagram accounts.</li>
+    <li><strong>Anthropic, OpenAI, OpenRouter</strong> — AI providers for text generation (story scripts, captions, titles).</li>
+    <li><strong>ElevenLabs</strong> — AI provider for narration audio.</li>
+    <li><strong>Cloudflare R2</strong> — storage and CDN for generated images, audio, and rendered video.</li>
+    <li><strong>Hosting infrastructure</strong> — to run the Service.</li>
+  </ul>
+  <p>Use of YouTube APIs by the Service is subject to the <a href="https://www.youtube.com/t/terms">YouTube Terms of Service</a> and <a href="https://policies.google.com/privacy">Google Privacy Policy</a>.</p>
+
+  <h2>4. How we use your information</h2>
+  <p>We use the information described above only to operate the Service: authenticate users, run the production pipeline, upload videos to the platforms you authorize, and surface errors. We do not sell, rent, or share user information with third parties for advertising or marketing.</p>
+
+  <h2>5. Data storage and security</h2>
+  <p>OAuth credentials are encrypted at rest using AES-256-GCM. Account passwords (where used) are stored hashed. Generated content is stored on Cloudflare R2 with access restricted to the operator. We use industry-standard transport security (HTTPS) for data in transit.</p>
+
+  <h2>6. Data retention</h2>
+  <p>Account info and OAuth credentials are retained as long as the account is active. On account deletion, we delete or de-link credentials within 30 days. Generated content is retained for as long as it is needed for the Service's purposes; you can request deletion at any time.</p>
+
+  <h2>7. Your choices</h2>
+  <p>You can:</p>
+  <ul>
+    <li>Disconnect any linked third-party platform account at any time from the Service's admin panel; we revoke and delete the stored OAuth credentials when you do.</li>
+    <li>Request deletion of your account and associated content by emailing the address below.</li>
+    <li>Revoke the Service's access to a connected account directly through that platform's authorization settings (e.g. <a href="https://myaccount.google.com/permissions">Google permissions</a>, <a href="https://www.tiktok.com/setting/manage-app-permissions">TikTok app permissions</a>).</li>
+  </ul>
+
+  <h2>8. Children's privacy</h2>
+  <p>The Service is an admin tool intended for use by adult content creators only. It is not directed to children under 13, and we do not knowingly collect information from children. Some content produced by the Service is intended for child audiences when published to third-party platforms — but children do not interact with the Service itself.</p>
+
+  <h2>9. Cookies</h2>
+  <p>The Service uses essential cookies for authentication (session tokens). It does not use advertising or analytics cookies.</p>
+
+  <h2>10. International users</h2>
+  <p>The Service is operated from the United States. By using the Service, you consent to the transfer of information to the United States, which may have data protection laws different from your country.</p>
+
+  <h2>11. Changes to this policy</h2>
+  <p>We may update this Privacy Policy periodically. Material changes will be reflected by updating the "Last updated" date at the top. Continued use after a change constitutes acceptance of the updated policy.</p>
+
+  <h2>12. Contact</h2>
+  <p>For privacy questions, data deletion requests, or to revoke connected accounts, email <a href="mailto:ahk.biz101@gmail.com">ahk.biz101@gmail.com</a>.</p>
+
+  <p><small><a href="index.html">&larr; Back</a></small></p>
+</body>
+</html>
